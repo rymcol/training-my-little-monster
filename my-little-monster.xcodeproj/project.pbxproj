@@ -17,6 +17,7 @@
 		945E11AC1C95E540001C0486 /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = 945E11A71C95E540001C0486 /* death.wav */; };
 		945E11AD1C95E540001C0486 /* heart.wav in Resources */ = {isa = PBXBuildFile; fileRef = 945E11A81C95E540001C0486 /* heart.wav */; };
 		945E11AE1C95E540001C0486 /* skull.wav in Resources */ = {isa = PBXBuildFile; fileRef = 945E11A91C95E540001C0486 /* skull.wav */; };
+		945E11B01C95F532001C0486 /* DragableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E11AF1C95F532001C0486 /* DragableImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		945E11A71C95E540001C0486 /* death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death.wav; sourceTree = "<group>"; };
 		945E11A81C95E540001C0486 /* heart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heart.wav; sourceTree = "<group>"; };
 		945E11A91C95E540001C0486 /* skull.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skull.wav; sourceTree = "<group>"; };
+		945E11AF1C95F532001C0486 /* DragableImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragableImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				945E11921C95E3D5001C0486 /* AppDelegate.swift */,
 				945E11941C95E3D5001C0486 /* ViewController.swift */,
+				945E11AF1C95F532001C0486 /* DragableImage.swift */,
 				945E11961C95E3D5001C0486 /* Main.storyboard */,
 				945E11991C95E3D5001C0486 /* Assets.xcassets */,
 				945E11A41C95E51F001C0486 /* Audio */,
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				945E11B01C95F532001C0486 /* DragableImage.swift in Sources */,
 				945E11951C95E3D5001C0486 /* ViewController.swift in Sources */,
 				945E11931C95E3D5001C0486 /* AppDelegate.swift in Sources */,
 			);
@@ -282,6 +286,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "my-little-monster/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryanmcollins.my-little-monster";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -294,6 +299,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "my-little-monster/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryanmcollins.my-little-monster";
 				PRODUCT_NAME = "$(TARGET_NAME)";

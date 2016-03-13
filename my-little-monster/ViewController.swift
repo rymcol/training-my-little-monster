@@ -10,9 +10,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var monster: UIImageView!
+    @IBOutlet weak var love: DragableImage!
+    @IBOutlet weak var food: DragableImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        var monsterImages = [UIImage]()
+        
+        for i in 1...4 {
+            if let img = UIImage(named: "idle\(i)") {
+               monsterImages.append(img)
+            }
+        }
+        
+        monster.animationImages = monsterImages
+        monster.animationDuration = 0.8
+        monster.animationRepeatCount = 0
+        monster.startAnimating()
+        
     }
 
     override func didReceiveMemoryWarning() {
