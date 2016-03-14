@@ -33,7 +33,10 @@ class DragableImage: UIImageView {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
+        self.center = originalPosition
+//        if let touch = touches.first {
+//            
+//        }
     }
     
 }
