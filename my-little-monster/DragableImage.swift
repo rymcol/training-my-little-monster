@@ -22,8 +22,7 @@ class DragableImage: UIImageView {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-            print("Touched The Image!")
-            originalPosition = self.center
+        originalPosition = self.center
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
