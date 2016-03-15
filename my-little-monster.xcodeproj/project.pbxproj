@@ -18,6 +18,7 @@
 		945E11AD1C95E540001C0486 /* heart.wav in Resources */ = {isa = PBXBuildFile; fileRef = 945E11A81C95E540001C0486 /* heart.wav */; };
 		945E11AE1C95E540001C0486 /* skull.wav in Resources */ = {isa = PBXBuildFile; fileRef = 945E11A91C95E540001C0486 /* skull.wav */; };
 		945E11B01C95F532001C0486 /* DragableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E11AF1C95F532001C0486 /* DragableImage.swift */; };
+		948D3E8A1C98A094006514D8 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948D3E891C98A094006514D8 /* Monster.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		945E11A81C95E540001C0486 /* heart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heart.wav; sourceTree = "<group>"; };
 		945E11A91C95E540001C0486 /* skull.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skull.wav; sourceTree = "<group>"; };
 		945E11AF1C95F532001C0486 /* DragableImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragableImage.swift; sourceTree = "<group>"; };
+		948D3E891C98A094006514D8 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				945E11921C95E3D5001C0486 /* AppDelegate.swift */,
 				945E11941C95E3D5001C0486 /* ViewController.swift */,
+				948D3E891C98A094006514D8 /* Monster.swift */,
 				945E11AF1C95F532001C0486 /* DragableImage.swift */,
 				945E11961C95E3D5001C0486 /* Main.storyboard */,
 				945E11991C95E3D5001C0486 /* Assets.xcassets */,
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				948D3E8A1C98A094006514D8 /* Monster.swift in Sources */,
 				945E11B01C95F532001C0486 /* DragableImage.swift in Sources */,
 				945E11951C95E3D5001C0486 /* ViewController.swift in Sources */,
 				945E11931C95E3D5001C0486 /* AppDelegate.swift in Sources */,
@@ -325,6 +329,7 @@
 				945E11A31C95E3D5001C0486 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
