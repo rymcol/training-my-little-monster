@@ -12,10 +12,13 @@ import UIKit
 class MonsterGame {
     
     private var _currentPenalties = 0
+    private var _currentItem: UInt32 = 0
+    
     let MAX_PENALTIES = 3
     var timer: NSTimer!
     var monsterHappy = true
-    var currentItem: UInt32 = 0
+    
+    var gameAudio = GameAudio()
     
     var currentPenalties: Int {
         get {
@@ -23,8 +26,15 @@ class MonsterGame {
         }
     }
     
+    var currentItem: UInt32 {
+        get {
+            return _currentItem
+        }
+    }
+    
     init () {        
         startTimer()
+        gameAudio.musicPlayer.play()
     }
     
     func startTimer() {
@@ -40,12 +50,18 @@ class MonsterGame {
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "timeToChangeState", object: nil))
     }
     
-    func incrementPenalties() {
-        _currentPenalties += 1
+    func setCurrentItem(item: UInt32) {
+        _currentItem = item
     }
     
-    func resetGame () {
+    func addPenalty() {
+        _currentPenalties += 1
+        gameAudio.sfxSkull.play()
+    }
+    
+    func resetMonster () {
         _currentPenalties = 0
+        monsterHappy = true
         startTimer()
     }
     

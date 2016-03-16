@@ -11,7 +11,14 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var golemButton: UIButton!
+    @IBOutlet weak var snailButton: UIButton!
+    @IBOutlet weak var ChooseCharacterLabel: UILabel!
+    
     @IBOutlet weak var monster: Monster!
+    @IBOutlet weak var itemStack: UIStackView!
+    @IBOutlet weak var livesStack: UIStackView!
+    @IBOutlet weak var livesPanel: UIImageView!
     @IBOutlet weak var love: DragableImage!
     @IBOutlet weak var food: DragableImage!
     @IBOutlet weak var whip: DragableImage!
@@ -22,7 +29,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var reviveButton: UIButton!
     
-    var gameAudio: GameAudio!
     var monsterGame: MonsterGame!
     
     let DIM_ALPHA: CGFloat = 0.2
@@ -36,18 +42,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        monsterGame = MonsterGame()
-        resetSkulls()
-        setDropTargets([love,whip,food])
-        changeItemStates([food,love,whip], state: ItemState.disabled)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.itemDroppedOnCharacter(_:)), name: "onTargetDropped", object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.changeGameState), name: "timeToChangeState", object: nil)
-        
-        gameAudio = GameAudio()
-        gameAudio.musicPlayer.play()
     }
+    
+    @IBAction func choseGolem(sender: UIButton) {
+        monster.image = UIImage(named: "golem-idle1.png")
+        monster.monsterName = "golem"
+        monster.deadImageCount = 5
+        monster.playIdleAnimation()
+        startGame()
+    }
+    
+    
+    @IBAction func choseSnail(sender: UIButton) {
+        monster.image = UIImage(named: "snail-idle1.png")
+        monster.monsterName = "snail"
+        monster.deadImageCount = 3
+        monster.playIdleAnimation()
+        startGame()
+    }
+    
     
     func setDropTargets (images: [DragableImage]) {
         for image in images {
@@ -62,9 +76,9 @@ class ViewController: UIViewController {
         changeItemStates([food,love,whip], state: ItemState.disabled)
         
         if monsterGame.currentItem == 0 {
-            gameAudio.sfxLove.play()
+            monsterGame.gameAudio.sfxLove.play()
         } else {
-            gameAudio.sfxBite.play()
+            monsterGame.gameAudio.sfxBite.play()
         }
     }
     
@@ -72,9 +86,7 @@ class ViewController: UIViewController {
         
         if !monsterGame.monsterHappy {
             
-            monsterGame.incrementPenalties()
-            
-            gameAudio.sfxSkull.play()
+            monsterGame.addPenalty()
             
             if monsterGame.currentPenalties == 1 {
                 leftSkull.alpha = OPAQUE
@@ -104,7 +116,7 @@ class ViewController: UIViewController {
             changeItemStates([whip], state: ItemState.enabled)
         }
         
-        monsterGame.currentItem = rand
+        monsterGame.setCurrentItem(rand)
         monsterGame.monsterHappy = false
         
     }
@@ -132,9 +144,29 @@ class ViewController: UIViewController {
     func gameOver () {
         monsterGame.timer.invalidate()
         monster.playDeathAnimation()
-        gameAudio.sfxDead.play()
-        
+        monsterGame.gameAudio.sfxDead.play()
         reviveButton.hidden = false
+    }
+    
+    func startGame() {
+        
+        ChooseCharacterLabel.hidden = true
+        golemButton.hidden = true
+        snailButton.hidden = true
+        
+        livesPanel.hidden = false
+        livesStack.hidden = false
+        itemStack.hidden = false
+        monster.hidden = false
+        
+        monsterGame = MonsterGame()
+        resetSkulls()
+        setDropTargets([love,whip,food])
+        changeItemStates([food,love,whip], state: ItemState.disabled)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.itemDroppedOnCharacter(_:)), name: "onTargetDropped", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.changeGameState), name: "timeToChangeState", object: nil)
     }
     
     
@@ -143,8 +175,10 @@ class ViewController: UIViewController {
         changeItemStates([love,food,whip], state: ItemState.disabled)
         reviveButton.hidden = true
         monster.playResetAnimation()
-        monsterGame.resetGame()
+        monsterGame.resetMonster()
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

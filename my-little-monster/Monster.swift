@@ -11,25 +11,28 @@ import UIKit
 
 class Monster: UIImageView {
     
+    var monsterName = "golem"
+    var idleImageCount = 4
+    var deadImageCount = 5
+    
     override init (frame: CGRect) {
         super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        playIdleAnimation()
     }
     
     func playIdleAnimation () {
         
-        self.image = UIImage(named: "idle1")
+        self.image = UIImage(named: "\(monsterName)-idle1")
         
         self.animationImages = nil
         
         var monsterImages = [UIImage]()
         
-        for i in 1...4 {
-            if let img = UIImage(named: "idle\(i)") {
+        for i in 1...idleImageCount {
+            if let img = UIImage(named: "\(monsterName)-idle\(i)") {
                 monsterImages.append(img)
             }
         }
@@ -42,14 +45,14 @@ class Monster: UIImageView {
     
     func playDeathAnimation () {
         
-        self.image = UIImage(named: "dead5.png")
+        self.image = UIImage(named: "\(monsterName)-dead5.png")
         
         self.animationImages = nil
         
         var monsterImages = [UIImage]()
         
-        for i in 1...5 {
-            if let img = UIImage(named: "dead\(i)") {
+        for i in 1...deadImageCount {
+            if let img = UIImage(named: "\(monsterName)-dead\(i)") {
                 monsterImages.append(img)
             }
         }
@@ -61,14 +64,14 @@ class Monster: UIImageView {
     }
     
     func playResetAnimation() {
-        self.image = UIImage(named: "idle1.png")
+        self.image = UIImage(named: "\(monsterName)-idle1.png")
         
         self.animationImages = nil
         
         var monsterImages = [UIImage]()
         
-        for i in (1...5).reverse() {
-            if let img = UIImage(named: "dead\(i)") {
+        for i in (1...deadImageCount).reverse() {
+            if let img = UIImage(named: "\(monsterName)-dead\(i)") {
                 monsterImages.append(img)
             }
         }

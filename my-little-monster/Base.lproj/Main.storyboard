@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="60" id="Ya7-4b-lJi"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livespanel" translatesAutoresizingMaskIntoConstraints="NO" id="ykm-Lp-T6B">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livespanel" translatesAutoresizingMaskIntoConstraints="NO" id="ykm-Lp-T6B">
                                 <rect key="frame" x="180" y="35" width="240" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="0nS-cO-lR3"/>
@@ -38,7 +38,7 @@
                                     <rect key="frame" x="412" y="35" width="240" height="72"/>
                                 </variation>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-0V-qPT">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-0V-qPT">
                                 <rect key="frame" x="206" y="47" width="180" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skull" translatesAutoresizingMaskIntoConstraints="NO" id="mm7-wo-c55">
@@ -67,14 +67,14 @@
                                     <rect key="frame" x="438" y="47" width="180" height="50"/>
                                 </variation>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="UVD-fJ-Kdu" customClass="Monster" customModule="my_little_monster" customModuleProvider="target">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="UVD-fJ-Kdu" customClass="Monster" customModule="my_little_monster" customModuleProvider="target">
                                 <rect key="frame" x="41" y="206" width="654" height="349"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="349" id="I7E-j4-pd5"/>
                                     <constraint firstAttribute="width" constant="654" id="Q2o-4a-PaK"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h8L-Xv-ldT">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h8L-Xv-ldT">
                                 <rect key="frame" x="125" y="122" width="350" height="100"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="kBF-zL-eXN" customClass="DragableImage" customModule="my_little_monster" customModuleProvider="target">
@@ -114,7 +114,7 @@
                                 </variation>
                             </stackView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIh-u0-ZSx">
-                                <rect key="frame" x="240.5" y="366" width="120" height="30"/>
+                                <rect key="frame" x="240" y="366" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="hBO-Kv-s6h"/>
                                     <constraint firstAttribute="height" constant="30" id="ygs-lx-tVM"/>
@@ -127,18 +127,60 @@
                                     <action selector="reviveMonster:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sK7-Xx-tjq"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ifO-Jc-aOp">
+                                <rect key="frame" x="150" y="275" width="300" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSs-8U-9bq">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                                        <state key="normal" title="Choose Golem" backgroundImage="button">
+                                            <color key="titleColor" red="0.98044380470000003" green="1" blue="0.95121562780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="choseGolem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O0P-AA-82w"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcR-Z6-xRZ">
+                                        <rect key="frame" x="160" y="0.0" width="140" height="50"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                                        <state key="normal" title="Choose Snail" backgroundImage="button">
+                                            <color key="titleColor" red="0.98044380470000003" green="1" blue="0.95121562780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="choseSnail:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3We-11-puY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="CRs-3I-HxS"/>
+                                    <constraint firstAttribute="height" constant="50" id="oBN-QR-SIF"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Your Character" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbf-aG-c6v">
+                                <rect key="frame" x="194" y="238" width="212" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="AYi-GW-Jrp"/>
+                                    <constraint firstAttribute="width" constant="212" id="o3p-z2-GZq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" red="0.98044380470000003" green="1" blue="0.95121562780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2TV-Zx-5yR" secondAttribute="bottom" id="1ZU-8R-Vj4"/>
+                            <constraint firstItem="ifO-Jc-aOp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1k0-jT-qG8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UVD-fJ-Kdu" secondAttribute="bottom" constant="45" id="5GC-tm-r38"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="78x-Uj-RXG"/>
                             <constraint firstItem="nim-hb-DLd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7zQ-qE-U04"/>
                             <constraint firstItem="2TV-Zx-5yR" firstAttribute="top" secondItem="DIh-u0-ZSx" secondAttribute="bottom" constant="144" id="9C2-6x-kfg"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="top" secondItem="ykm-Lp-T6B" secondAttribute="bottom" constant="15" id="9Wj-mY-Frz"/>
+                            <constraint firstItem="ifO-Jc-aOp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="A9V-ZE-xPe"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EdW-zV-fbW"/>
                             <constraint firstItem="ykm-Lp-T6B" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FXy-kk-fI0"/>
                             <constraint firstItem="nim-hb-DLd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L3g-Fg-lfJ"/>
+                            <constraint firstItem="ifO-Jc-aOp" firstAttribute="top" secondItem="cbf-aG-c6v" secondAttribute="bottom" constant="16" id="Pa6-So-e1P"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QBv-q5-CyD"/>
                             <constraint firstAttribute="trailing" secondItem="2TV-Zx-5yR" secondAttribute="trailing" id="TA2-wc-QRD"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZGf-5U-w1j"/>
@@ -147,6 +189,7 @@
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="centerX" secondItem="ykm-Lp-T6B" secondAttribute="centerX" id="cR5-bh-khf"/>
                             <constraint firstItem="Moe-0V-qPT" firstAttribute="centerY" secondItem="ykm-Lp-T6B" secondAttribute="centerY" constant="1" id="fnN-OW-DZl"/>
                             <constraint firstItem="Moe-0V-qPT" firstAttribute="centerX" secondItem="ykm-Lp-T6B" secondAttribute="centerX" constant="-4" id="gLb-gT-fNw"/>
+                            <constraint firstItem="cbf-aG-c6v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kVN-0F-wZL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nim-hb-DLd" secondAttribute="bottom" id="rLm-Ho-hFN"/>
                             <constraint firstItem="UVD-fJ-Kdu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="68" id="sOL-15-9Jc"/>
                             <constraint firstItem="ykm-Lp-T6B" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="tV7-rB-DN9"/>
@@ -180,13 +223,19 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="ChooseCharacterLabel" destination="cbf-aG-c6v" id="fPG-5k-jrX"/>
                         <outlet property="food" destination="oRs-Iq-EmO" id="KKn-0l-poM"/>
+                        <outlet property="golemButton" destination="bSs-8U-9bq" id="aXe-Dc-fQI"/>
+                        <outlet property="itemStack" destination="h8L-Xv-ldT" id="soi-9k-aZd"/>
                         <outlet property="leftSkull" destination="mm7-wo-c55" id="bIK-4g-gvl"/>
+                        <outlet property="livesPanel" destination="ykm-Lp-T6B" id="Snj-rR-fn0"/>
+                        <outlet property="livesStack" destination="Moe-0V-qPT" id="xCB-mH-djH"/>
                         <outlet property="love" destination="kBF-zL-eXN" id="GP2-RD-WQY"/>
                         <outlet property="middleSkull" destination="mlx-zK-TFy" id="LaS-7t-Qb4"/>
                         <outlet property="monster" destination="UVD-fJ-Kdu" id="D2D-TK-Tkz"/>
                         <outlet property="reviveButton" destination="DIh-u0-ZSx" id="VlC-Ui-L4c"/>
                         <outlet property="rightSkull" destination="faf-Rj-i5q" id="vSh-vp-JOc"/>
+                        <outlet property="snailButton" destination="xcR-Z6-xRZ" id="Ila-ys-uO5"/>
                         <outlet property="whip" destination="vnh-z0-kzy" id="JBA-tx-SFt"/>
                     </connections>
                 </viewController>
