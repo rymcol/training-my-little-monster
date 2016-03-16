@@ -20,110 +20,130 @@ class ViewController: UIViewController {
     @IBOutlet weak var middleSkull: UIImageView!
     @IBOutlet weak var rightSkull: UIImageView!
     
+    @IBOutlet weak var reviveButton: UIButton!
+    
     var gameAudio: GameAudio!
+    var monsterGame: MonsterGame!
     
     let DIM_ALPHA: CGFloat = 0.2
     let OPAQUE: CGFloat = 1.0
-    let MAX_PENALTIES = 3
-    var currentPenalties = 0
-    var timer: NSTimer!
-    var monsterHappy = false
-    var currentItem: UInt32 = 0
+    
+    enum ItemState {
+        case enabled
+        case disabled
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        food.dropTarget = monster; love.dropTarget = monster;
-        
-        setAlpha(leftSkull, alpha: DIM_ALPHA)
-        setAlpha(middleSkull, alpha: DIM_ALPHA)
-        setAlpha(rightSkull, alpha: DIM_ALPHA)
+        monsterGame = MonsterGame()
+        resetSkulls()
+        setDropTargets([love,whip,food])
+        changeItemStates([food,love,whip], state: ItemState.disabled)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.itemDroppedOnCharacter(_:)), name: "onTargetDropped", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.changeGameState), name: "timeToChangeState", object: nil)
+        
         gameAudio = GameAudio()
         gameAudio.musicPlayer.play()
-        startTimer()
+    }
+    
+    func setDropTargets (images: [DragableImage]) {
+        for image in images {
+            image.dropTarget = monster
+        }
     }
     
     func itemDroppedOnCharacter (notification: AnyObject) {
-        monsterHappy = true
-        startTimer()
+        monsterGame.monsterHappy = true
+        monsterGame.startTimer()
         
-        food.alpha = DIM_ALPHA
-        love.alpha = DIM_ALPHA
+        changeItemStates([food,love,whip], state: ItemState.disabled)
         
-        food.userInteractionEnabled = false
-        love.userInteractionEnabled = false
-        
-        if currentItem == 0 {
+        if monsterGame.currentItem == 0 {
             gameAudio.sfxLove.play()
         } else {
             gameAudio.sfxBite.play()
         }
     }
     
-    func setAlpha (image: UIImageView, alpha: CGFloat) {
-        image.alpha = alpha
-    }
-    
-    func startTimer() {
-        if timer != nil {
-            timer.invalidate()
-        }
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(ViewController.changeGameState), userInfo: nil, repeats: true)
-    }
-    
     func changeGameState() {
         
-        if !monsterHappy {
+        if !monsterGame.monsterHappy {
             
-            currentPenalties += 1; gameAudio.sfxSkull.play();
+            monsterGame.incrementPenalties()
             
-            if currentPenalties == 1 {
-                setAlpha(leftSkull, alpha: OPAQUE)
-            } else if currentPenalties == 2 {
-                setAlpha(middleSkull, alpha: OPAQUE)
-            } else if currentPenalties >= 3 {
-                setAlpha(rightSkull, alpha: OPAQUE)
+            gameAudio.sfxSkull.play()
+            
+            if monsterGame.currentPenalties == 1 {
+                leftSkull.alpha = OPAQUE
+            } else if monsterGame.currentPenalties == 2 {
+                middleSkull.alpha = OPAQUE
+            } else if monsterGame.currentPenalties >= 3 {
+                rightSkull.alpha = OPAQUE
             } else  {
-                setAlpha(leftSkull, alpha: DIM_ALPHA)
-                setAlpha(middleSkull, alpha: DIM_ALPHA)
-                setAlpha(rightSkull, alpha: DIM_ALPHA)
+                resetSkulls()
             }
             
-            if currentPenalties >= MAX_PENALTIES {
+            if monsterGame.currentPenalties >= monsterGame.MAX_PENALTIES {
                 gameOver()
             }
         }
         
-        let rand = arc4random_uniform(2)
+        let rand = arc4random_uniform(3)
         
         if rand == 0 {
-            food.alpha = DIM_ALPHA
-            food.userInteractionEnabled = false
-            
-            love.alpha = OPAQUE
-            love.userInteractionEnabled = true
+            changeItemStates([food, whip], state: ItemState.disabled)
+            changeItemStates([love], state: ItemState.enabled)
+        } else if rand == 1 {
+            changeItemStates([love, whip], state: ItemState.disabled)
+            changeItemStates([food], state: ItemState.enabled)
         } else {
-            love.alpha = DIM_ALPHA
-            love.userInteractionEnabled = false
-            
-            food.alpha = OPAQUE
-            food.userInteractionEnabled = true
+            changeItemStates([love, food], state: ItemState.disabled)
+            changeItemStates([whip], state: ItemState.enabled)
         }
         
-        currentItem = rand
-        monsterHappy = false
-        
+        monsterGame.currentItem = rand
+        monsterGame.monsterHappy = false
         
     }
     
+    func changeItemStates (items: [DragableImage], state: ItemState) {
+        if state == ItemState.enabled {
+            for item in items {
+                item.alpha = OPAQUE
+                item.userInteractionEnabled = true
+            }
+        } else {
+            for item in items {
+                item.alpha = DIM_ALPHA
+                item.userInteractionEnabled = false
+            }
+        }
+    }
+        
+    func resetSkulls () {
+        leftSkull.alpha = DIM_ALPHA
+        middleSkull.alpha = DIM_ALPHA
+        rightSkull.alpha = DIM_ALPHA
+    }
+    
     func gameOver () {
-        timer.invalidate()
+        monsterGame.timer.invalidate()
         monster.playDeathAnimation()
         gameAudio.sfxDead.play()
+        
+        reviveButton.hidden = false
+    }
+    
+    
+    @IBAction func reviveMonster(sender: UIButton) {
+        resetSkulls()
+        changeItemStates([love,food,whip], state: ItemState.disabled)
+        reviveButton.hidden = true
+        monster.playResetAnimation()
+        monsterGame.resetGame()
     }
 
     override func didReceiveMemoryWarning() {

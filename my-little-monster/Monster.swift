@@ -60,4 +60,26 @@ class Monster: UIImageView {
         self.startAnimating()
     }
     
+    func playResetAnimation() {
+        self.image = UIImage(named: "idle1.png")
+        
+        self.animationImages = nil
+        
+        var monsterImages = [UIImage]()
+        
+        for i in (1...5).reverse() {
+            if let img = UIImage(named: "dead\(i)") {
+                monsterImages.append(img)
+            }
+        }
+        
+        self.animationImages = monsterImages
+        self.animationDuration = 1.8
+        self.animationRepeatCount = 1
+        self.startAnimating()
+        
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(Monster.playIdleAnimation), userInfo: nil, repeats: false)
+        
+    }
+    
 }

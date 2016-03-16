@@ -11,15 +11,42 @@ import UIKit
 
 class MonsterGame {
     
-    let DIM_ALPHA: CGFloat = 0.2
-    let OPAQUE: CGFloat = 1.0
+    private var _currentPenalties = 0
     let MAX_PENALTIES = 3
-    var currentPenalties = 0
     var timer: NSTimer!
-    var monsterHappy = false
+    var monsterHappy = true
     var currentItem: UInt32 = 0
     
+    var currentPenalties: Int {
+        get {
+            return _currentPenalties
+        }
+    }
     
+    init () {        
+        startTimer()
+    }
     
+    func startTimer() {
+        if timer != nil {
+            timer.invalidate()
+        }
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(MonsterGame.changeGameState), userInfo: nil, repeats: true)
+    }
+    
+    @objc func changeGameState() {
+        
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "timeToChangeState", object: nil))
+    }
+    
+    func incrementPenalties() {
+        _currentPenalties += 1
+    }
+    
+    func resetGame () {
+        _currentPenalties = 0
+        startTimer()
+    }
     
 }
