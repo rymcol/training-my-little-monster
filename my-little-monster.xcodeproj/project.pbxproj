@@ -70,10 +70,9 @@
 			children = (
 				945E11921C95E3D5001C0486 /* AppDelegate.swift */,
 				945E11941C95E3D5001C0486 /* ViewController.swift */,
-				948D3E891C98A094006514D8 /* Monster.swift */,
-				945E11AF1C95F532001C0486 /* DragableImage.swift */,
 				945E11961C95E3D5001C0486 /* Main.storyboard */,
 				945E11991C95E3D5001C0486 /* Assets.xcassets */,
+				947760751C98BA7500835BDC /* Custom Image Classes */,
 				945E11A41C95E51F001C0486 /* Audio */,
 				945E119B1C95E3D5001C0486 /* LaunchScreen.storyboard */,
 				945E119E1C95E3D5001C0486 /* Info.plist */,
@@ -91,6 +90,15 @@
 				945E11A91C95E540001C0486 /* skull.wav */,
 			);
 			name = Audio;
+			sourceTree = "<group>";
+		};
+		947760751C98BA7500835BDC /* Custom Image Classes */ = {
+			isa = PBXGroup;
+			children = (
+				948D3E891C98A094006514D8 /* Monster.swift */,
+				945E11AF1C95F532001C0486 /* DragableImage.swift */,
+			);
+			name = "Custom Image Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

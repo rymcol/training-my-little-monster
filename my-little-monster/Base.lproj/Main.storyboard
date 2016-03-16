@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15E61b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10084"/>
@@ -157,8 +157,11 @@
                     </view>
                     <connections>
                         <outlet property="food" destination="oRs-Iq-EmO" id="KKn-0l-poM"/>
+                        <outlet property="leftSkull" destination="mm7-wo-c55" id="bIK-4g-gvl"/>
                         <outlet property="love" destination="kBF-zL-eXN" id="GP2-RD-WQY"/>
+                        <outlet property="middleSkull" destination="mlx-zK-TFy" id="LaS-7t-Qb4"/>
                         <outlet property="monster" destination="UVD-fJ-Kdu" id="D2D-TK-Tkz"/>
+                        <outlet property="rightSkull" destination="faf-Rj-i5q" id="vSh-vp-JOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
