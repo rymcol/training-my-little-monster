@@ -33,7 +33,6 @@ class MonsterGame {
     }
     
     init () {        
-        startTimer()
         gameAudio.musicPlayer.play()
     }
     
@@ -60,9 +59,13 @@ class MonsterGame {
     }
     
     func resetMonster () {
+        if timer != nil {
+            timer.invalidate()
+        }
+        timer = nil
         _currentPenalties = 0
-        monsterHappy = true
-        startTimer()
+        _currentItem = 0
+        self.monsterHappy = true
     }
     
 }

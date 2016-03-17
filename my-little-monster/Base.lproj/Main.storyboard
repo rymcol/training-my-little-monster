@@ -84,13 +84,13 @@
                                         </variation>
                                     </imageView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whip" translatesAutoresizingMaskIntoConstraints="NO" id="vnh-z0-kzy" customClass="DragableImage" customModule="my_little_monster" customModuleProvider="target">
-                                        <rect key="frame" x="118.5" y="0.0" width="113" height="100"/>
+                                        <rect key="frame" x="118" y="0.0" width="113" height="100"/>
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="96" height="61"/>
                                         </variation>
                                     </imageView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="oRs-Iq-EmO" customClass="DragableImage" customModule="my_little_monster" customModuleProvider="target">
-                                        <rect key="frame" x="236.5" y="0.0" width="113.5" height="100"/>
+                                        <rect key="frame" x="236" y="0.0" width="113.5" height="100"/>
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="71" width="96" height="61"/>
                                         </variation>
@@ -113,20 +113,21 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIh-u0-ZSx">
-                                <rect key="frame" x="240" y="366" width="120" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="hBO-Kv-s6h"/>
-                                    <constraint firstAttribute="height" constant="30" id="ygs-lx-tVM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
-                                <state key="normal" title="Revive Monster" backgroundImage="button">
-                                    <color key="titleColor" red="0.98044380468945702" green="1" blue="0.95121562778203905" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="reviveMonster:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sK7-Xx-tjq"/>
-                                </connections>
-                            </button>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0Z3-XV-GeJ">
+                                <rect key="frame" x="194" y="292" width="212" height="78"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIh-u0-ZSx">
+                                        <rect key="frame" x="0.0" y="0.0" width="212" height="78"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
+                                        <state key="normal" title="Revive Monster" backgroundImage="button">
+                                            <color key="titleColor" red="0.98044380468945702" green="1" blue="0.95121562778203905" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="reviveMonster:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sK7-Xx-tjq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ifO-Jc-aOp">
                                 <rect key="frame" x="150" y="275" width="300" height="50"/>
                                 <subviews>
@@ -174,7 +175,6 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UVD-fJ-Kdu" secondAttribute="bottom" constant="45" id="5GC-tm-r38"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="78x-Uj-RXG"/>
                             <constraint firstItem="nim-hb-DLd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7zQ-qE-U04"/>
-                            <constraint firstItem="2TV-Zx-5yR" firstAttribute="top" secondItem="DIh-u0-ZSx" secondAttribute="bottom" constant="144" id="9C2-6x-kfg"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="top" secondItem="ykm-Lp-T6B" secondAttribute="bottom" constant="15" id="9Wj-mY-Frz"/>
                             <constraint firstItem="ifO-Jc-aOp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="A9V-ZE-xPe"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EdW-zV-fbW"/>
@@ -186,6 +186,7 @@
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZGf-5U-w1j"/>
                             <constraint firstItem="UVD-fJ-Kdu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" multiplier="1.5" constant="-123" id="b5H-gD-3a3"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="top" secondItem="ykm-Lp-T6B" secondAttribute="bottom" constant="15" id="bmI-br-JhY"/>
+                            <constraint firstItem="0Z3-XV-GeJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cKp-20-2Gd"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="centerX" secondItem="ykm-Lp-T6B" secondAttribute="centerX" id="cR5-bh-khf"/>
                             <constraint firstItem="Moe-0V-qPT" firstAttribute="centerY" secondItem="ykm-Lp-T6B" secondAttribute="centerY" constant="1" id="fnN-OW-DZl"/>
                             <constraint firstItem="Moe-0V-qPT" firstAttribute="centerX" secondItem="ykm-Lp-T6B" secondAttribute="centerX" constant="-4" id="gLb-gT-fNw"/>
@@ -194,9 +195,9 @@
                             <constraint firstItem="UVD-fJ-Kdu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="68" id="sOL-15-9Jc"/>
                             <constraint firstItem="ykm-Lp-T6B" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="tV7-rB-DN9"/>
                             <constraint firstAttribute="trailing" secondItem="nim-hb-DLd" secondAttribute="trailing" id="wIW-Mt-cm6"/>
-                            <constraint firstItem="DIh-u0-ZSx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wcV-ag-u3c"/>
                             <constraint firstItem="2TV-Zx-5yR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xHs-Hw-X4J"/>
                             <constraint firstItem="h8L-Xv-ldT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-12" id="yeR-WC-tEc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="0Z3-XV-GeJ" secondAttribute="bottom" constant="230" id="ywZ-bo-KGZ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -224,8 +225,10 @@
                     </view>
                     <connections>
                         <outlet property="ChooseCharacterLabel" destination="cbf-aG-c6v" id="fPG-5k-jrX"/>
+                        <outlet property="background" destination="nim-hb-DLd" id="d4T-on-nSb"/>
                         <outlet property="food" destination="oRs-Iq-EmO" id="KKn-0l-poM"/>
                         <outlet property="golemButton" destination="bSs-8U-9bq" id="aXe-Dc-fQI"/>
+                        <outlet property="ground" destination="2TV-Zx-5yR" id="evV-kf-MKt"/>
                         <outlet property="itemStack" destination="h8L-Xv-ldT" id="soi-9k-aZd"/>
                         <outlet property="leftSkull" destination="mm7-wo-c55" id="bIK-4g-gvl"/>
                         <outlet property="livesPanel" destination="ykm-Lp-T6B" id="Snj-rR-fn0"/>
@@ -233,6 +236,7 @@
                         <outlet property="love" destination="kBF-zL-eXN" id="GP2-RD-WQY"/>
                         <outlet property="middleSkull" destination="mlx-zK-TFy" id="LaS-7t-Qb4"/>
                         <outlet property="monster" destination="UVD-fJ-Kdu" id="D2D-TK-Tkz"/>
+                        <outlet property="resetButtonsStack" destination="0Z3-XV-GeJ" id="K0a-Qc-nqI"/>
                         <outlet property="reviveButton" destination="DIh-u0-ZSx" id="VlC-Ui-L4c"/>
                         <outlet property="rightSkull" destination="faf-Rj-i5q" id="vSh-vp-JOc"/>
                         <outlet property="snailButton" destination="xcR-Z6-xRZ" id="Ila-ys-uO5"/>

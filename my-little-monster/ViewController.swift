@@ -23,11 +23,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var food: DragableImage!
     @IBOutlet weak var whip: DragableImage!
     
+    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var ground: UIImageView!
+    
     @IBOutlet weak var leftSkull: UIImageView!
     @IBOutlet weak var middleSkull: UIImageView!
     @IBOutlet weak var rightSkull: UIImageView!
     
     @IBOutlet weak var reviveButton: UIButton!
+    @IBOutlet weak var resetButtonsStack: UIStackView!
     
     var monsterGame: MonsterGame!
     
@@ -42,23 +46,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        monsterGame = MonsterGame()
+        setDropTargets([love,whip,food])
     }
     
     @IBAction func choseGolem(sender: UIButton) {
+        
+        background.image = UIImage(named: "bg.png")
+        
         monster.image = UIImage(named: "golem-idle1.png")
         monster.monsterName = "golem"
         monster.deadImageCount = 5
         monster.playIdleAnimation()
+
         startGame()
     }
     
     
     @IBAction func choseSnail(sender: UIButton) {
+        
+        background.image = UIImage(named: "snailbg.png")
+        
         monster.image = UIImage(named: "snail-idle1.png")
         monster.monsterName = "snail"
         monster.deadImageCount = 3
         monster.playIdleAnimation()
+        
         startGame()
     }
     
@@ -145,7 +158,7 @@ class ViewController: UIViewController {
         monsterGame.timer.invalidate()
         monster.playDeathAnimation()
         monsterGame.gameAudio.sfxDead.play()
-        reviveButton.hidden = false
+        resetButtonsStack.hidden = false
     }
     
     func startGame() {
@@ -159,25 +172,30 @@ class ViewController: UIViewController {
         itemStack.hidden = false
         monster.hidden = false
         
-        monsterGame = MonsterGame()
+        if !monsterGame.gameAudio.musicPlayer.playing {
+            monsterGame.gameAudio.musicPlayer.play()
+        }
+        
         resetSkulls()
-        setDropTargets([love,whip,food])
         changeItemStates([food,love,whip], state: ItemState.disabled)
+        monsterGame.monsterHappy = true
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.itemDroppedOnCharacter(_:)), name: "onTargetDropped", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.changeGameState), name: "timeToChangeState", object: nil)
+        
+        monsterGame.startTimer()
     }
     
     
     @IBAction func reviveMonster(sender: UIButton) {
         resetSkulls()
         changeItemStates([love,food,whip], state: ItemState.disabled)
-        reviveButton.hidden = true
+        resetButtonsStack.hidden = true
         monster.playResetAnimation()
         monsterGame.resetMonster()
+        monsterGame.startTimer()
     }
-    
     
 
     override func didReceiveMemoryWarning() {
